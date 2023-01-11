@@ -1,5 +1,3 @@
-#This is the main file
-#Group name==hotel
 
 from prog_start import *
 #imports all functions from neccassary for start up of program
