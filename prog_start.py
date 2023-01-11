@@ -38,8 +38,12 @@ def readfile():
         
 
     print(crypto_dataset)
+    return crypto_dataset
 
 def exitprog():
     
     print('exiting main menu')
     quit()
+
+def displaycrypto(dataset):
+    print(dataset)
