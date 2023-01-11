@@ -1,3 +1,4 @@
+#This is the main file#
 
 from prog_start import *
 #imports all functions from neccassary for start up of program
