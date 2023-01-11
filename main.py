@@ -1,4 +1,5 @@
 #This is the main file
+#Group name==hotel
 
 from Function_1 import *
 #imports all functions from Function_1
