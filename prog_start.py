@@ -41,9 +41,8 @@ def readfile():
     return crypto_dataset
 
 def exitprog():
-    
+    #add code to encode data
     print('exiting main menu')
     quit()
 
-def displaycrypto(dataset):
-    print(dataset)
+
