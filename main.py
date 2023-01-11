@@ -1,10 +1,7 @@
 #This is the main file
-#List [name,market_cap,quantity,buy_price,market_price]
 
-
-from Function_1 import startingscreen
-from Function_1 import readfile
-from Function_1 import exitprog
+from Function_1 import *
+#imports all functions from Function_1
 
 if __name__=="__main__":
     startingscreen()
