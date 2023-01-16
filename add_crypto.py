@@ -22,11 +22,11 @@ def addcrypto(data):
     
 
 def add_market_cap():
-    try:
-        new_market_cap=int(input('Enter market cap of crypto'))
-    except (AttributeError, TypeError):
-      raise AssertionError('Input variables should be integers')
-    finally:
-        market_cap=str(new_market_cap)
-        return market_cap
+        try:
+            new_market_cap=int(input('Enter market cap of crypto'))
+        except (TypeError):
+            raise AssertionError('Input variables should be integers try again')
+        else:
+            market_cap=str(new_market_cap)
+            return market_cap
 
