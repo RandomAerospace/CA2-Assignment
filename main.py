@@ -1,7 +1,7 @@
 #This is the main file#
 #Group Name=Hotel
 
-from prog_start import *
+from start_end import *
 #imports all functions from neccassary for start up of program
 from display_crypto import *
 #imports all functions for displaying crypto
@@ -34,14 +34,23 @@ if __name__=="__main__":
                 displaycrypto(data)
             elif input=='2':
                 print('Add Crytpcurrency')
+                #for this function, you need to return the data list in the function
+                data=addcrypto(data)
+                #updated the list to have additional cryptocurrency
+                
             elif input=='3':
                 print('Amend CryptoCurrency')
+                #for this function, you need to return the data list in the function
             elif input=='4':
                 print('Remove Cryptocurrency')
+                #for this function, you need to return the data list in the function
             else:
                 raise ValueError()
             
         except ValueError:
             print('oops wrong value')
+        
         finally:
+            #encode data
+            encodefile(data)
             del input
