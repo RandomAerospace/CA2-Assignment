@@ -6,13 +6,8 @@ def display_crypto_options():
     print("")
     print("No - cryptocurrency")
     print("-"*40)
-    
-    #for i in range(len()):
-    #    #keep track of the index of the current element in the list and user must select one of the options
-    #    print(i, "-", [i]) 
-    ''''''
-    #user_input = input("Enter 0 to {} for your selection or E to exit: ".format(len()-1))
-    #return user_input
+
+
 
 def processdata(data):
     print(data)
@@ -23,16 +18,17 @@ def processdata(data):
     return count
 
 
+
 def removecrypto(data):
 
     
     display_crypto_options()
     #put a function here to process AND SHOW THE DATA
      
-    while True:
+    while (True):
         try:
             count=processdata(data)  
-            user_input=input(f'Enter 0 to {count}, press e or E to exit: ')
+            user_input=input(f"Enter 0 to {count}, press e or E to exit: ")
             if user_input == "e" or user_input == "E":
                 print("Exiting to menu...")
                 exit()
@@ -45,10 +41,6 @@ def removecrypto(data):
 
     ''''''
     #user_input = input("Enter 0 to {} for your selection or E to exit: ".)
-
-    #if user_input.lower() == 'e' or user_input.lower() == 'E':
-    #    print("Exiting...")
-    #else:
     #    try:
     #        user_input = int(user_input)
     #        if user_input >= 0 and user_input < len(crypto_list):
