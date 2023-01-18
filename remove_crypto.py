@@ -36,7 +36,7 @@ def removecrypto(data):
                 print("Exiting to menu...")
                 exit()
             index = int(user_input)
-            if index<0 or index>count-1:
+            if index<0 or index>(count-1):
                 raise ValueError
             del data[index][0:] #data[variable][0:]
         except ValueError:
