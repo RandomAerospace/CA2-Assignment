@@ -28,19 +28,20 @@ def removecrypto(data):
     
     display_crypto_options()
     #put a function here to process AND SHOW THE DATA
+     
     while True:
         try:
             count=processdata(data)  
-            user_input=input(f'Enter 0 to {count-1}, press e or E to exit: ')
+            user_input=input(f'Enter 0 to {count}, press e or E to exit: ')
             if user_input == "e" or user_input == "E":
                 print("Exiting to menu...")
                 exit()
             index = int(user_input)
-            if index<0 or index>(count-1):
+            if index<0 or index>count:
                 raise ValueError
             del data[index][0:] #data[variable][0:]
         except ValueError:
-            print(f"Enter 0 to {count-1}")
+            print(f"Enter 0 to {count}")
 
     ''''''
     #user_input = input("Enter 0 to {} for your selection or E to exit: ".)
