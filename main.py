@@ -43,7 +43,7 @@ if __name__=="__main__":
                 print('Display Cryptocurrency')
                 displaycrypto(data)
             elif input=='2':
-                print('Add Crytpcurrency')
+                print('Add Cryptocurrency')
                 addcrypto(data)
                 
                 
