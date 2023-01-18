@@ -17,6 +17,16 @@ csv file will only be saved upon exit of program where the
 list will be encoded to a csv file, this simplifies file read and file write
 '''
 
+class inputerror(Exception):
+    """Raise for when the menu option is put in wrongly"""
+    #this is done to define the exception for it to be asserted in the main program
+
+
+
+
+
+
+
 if __name__=="__main__":
     startingscreen()
     data=readfile() #Initialises program by decoding crypto dataset csv file
@@ -34,10 +44,11 @@ if __name__=="__main__":
                 displaycrypto(data)
             elif input=='2':
                 print('Add Crytpcurrency')
-                while(True):
-                    data,state=addcrypto(data)
-                    if state==1:
-                        break
+                addcrypto(data)
+                
+                
+           
+       
             elif input=='3':
                 print('Amend CryptoCurrency')
                 #for this function, you need to return the data list in the function
@@ -45,14 +56,18 @@ if __name__=="__main__":
                 print('Remove Cryptocurrency')
                 #for this function, you need to return the data list in the function
             else:
-                raise ValueError()
+                raise inputerror
             
+        
+        except inputerror:
+             print('Please input the appropriate menu option')
         except ValueError:
-            print('oops wrong value')
-        except TypeError:
-            print("You're supposed to enter an integer")
+            print('Please enter an integer')
+        
         
         finally:
-            #encode data
-            encodefile(data)
+            startingscreen()
             del input
+    #saves file IF AND ONLY IF PROGRAM EXITS LOOp
+    encodefile(data)
+
