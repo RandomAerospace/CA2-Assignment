@@ -34,11 +34,10 @@ if __name__=="__main__":
                 displaycrypto(data)
             elif input=='2':
                 print('Add Crytpcurrency')
-                
-                #for this function, you need to return the data list in the function
-                data=addcrypto(data)
-                #updated the list to have additional cryptocurrency
-                
+                while(True):
+                    data,state=addcrypto(data)
+                    if state==1:
+                        break
             elif input=='3':
                 print('Amend CryptoCurrency')
                 #for this function, you need to return the data list in the function

@@ -30,5 +30,6 @@ def add_market_cap():
         raise AssertionError('Input variables should be integers try again')
     else:
         market_cap=str(new_market_cap)
-        return market_cap
+        state=1
+        return market_cap,state
 
