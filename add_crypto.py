@@ -17,16 +17,18 @@ def addcrypto(data):
     #time to combine these to be written into a file
 
     add_data=[new_crypto,new_market_cap,new_quantity,new_buy_in,new_market_price]
-    data.append(add_data)
+    print(add_data)
+    #data.append(add_data)
 
     
 
 def add_market_cap():
-        try:
-            new_market_cap=int(input('Enter market cap of crypto'))
-        except (TypeError):
-            raise AssertionError('Input variables should be integers try again')
-        else:
-            market_cap=str(new_market_cap)
-            return market_cap
+    
+    try:
+        new_market_cap=int(input('Enter market cap of crypto'))
+    except (TypeError):
+        raise AssertionError('Input variables should be integers try again')
+    else:
+        market_cap=str(new_market_cap)
+        return market_cap
 
