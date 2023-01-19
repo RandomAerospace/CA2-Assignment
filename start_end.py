@@ -19,6 +19,24 @@ def startingscreen():
     print('5.Crpyot Portfoilio statement')
     print('E.Exit menu')
 
+def midscreen():
+
+    
+    
+    print(50*'-')
+    print('\t Cryptocurrency portfoilio application main menu')
+    print(50*'-')
+
+    print('1.Display Crypto currency')
+    print('2.Add cryptocurrency')
+    print('3.Ammend Crypto currency')
+    print('4.Remove Cryptocurrency')
+    print('5.Crpyot Portfoilio statement')
+    print('E.Exit menu')
+
+
+
+
 def readfile():
     with open('dataset.csv','r') as file:
     
@@ -42,13 +60,14 @@ def readfile():
 
 def encodefile(data):
     with open('dataset.csv','w') as file:
-        print(data)
+        headers=['Name','Market_cap','Quantity','Buy_price','Market_price']
+        data.insert(0,headers)
         for i in data:
             file.write(','.join(i) + '\n')
 
 def exitprog():
     #add code to encode data
     print('exiting main menu')
-    quit()
+    exit()
 
 

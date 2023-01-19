@@ -22,17 +22,12 @@ class inputerror(Exception):
     #this is done to define the exception for it to be asserted in the main program
 
 
-
-
-
-
-
-
-
 if __name__=="__main__":
     startingscreen()
     data=readfile() #Initialises program by decoding crypto dataset csv file
-    
+    main_run_state=0 #for the sake of this main loop, what it does is for the mid program screen to appear or not
+
+
     #In this while loop, the data variable is passed among the different functions
     #All functions that manipulate the data will have to return it.
     while(True):
@@ -40,23 +35,28 @@ if __name__=="__main__":
             input=input('select an option:\t')
 
             if input=='E' or input=='e':
+                main_run_state=1
+                encodefile(data)
                 exitprog()
+                
             elif input=='1':
                 print('Display Cryptocurrency')
                 displaycrypto(data)
+
             elif input=='2':
                 print('Add Cryptocurrency')
                 addcrypto(data)
-                
-                
-           
-       
+
             elif input=='3':
                 print('Amend CryptoCurrency')
                 #for this function, you need to return the data list in the function
             elif input=='4':
                 print('Remove Cryptocurrency')
                 removecrypto(data)
+                #for this function, you need to return the data list in the function
+            elif input=='5':
+                print('Crypto Portoflio statement')
+                
                 #for this function, you need to return the data list in the function
             else:
                 raise inputerror
@@ -68,8 +68,9 @@ if __name__=="__main__":
         
         
         finally:
-            startingscreen()
+            if main_run_state==0:
+                midscreen()
             del input
     #saves file IF AND ONLY IF PROGRAM EXITS LOOp
-    encodefile(data)
+    
 
