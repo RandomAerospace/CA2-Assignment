@@ -1,6 +1,11 @@
 #This is the main file#
 #Group Name=Hotel
 
+
+
+
+
+#Internal libraries
 from start_end import *
 #imports all functions from neccassary for start up of program
 from display_crypto import *
