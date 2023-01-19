@@ -9,8 +9,8 @@ class uniquestate_error(Exception):
     """This comes up when the cryptocurrency name is NOT unique"""
 
 def addcrypto(data):
-    state_count=0
-    run_state=True
+    state_count=0 #program flag 1
+    run_state=True #program flag 2
     while(run_state==True):
         try:
             #define new parameters
@@ -83,15 +83,13 @@ def addcrypto(data):
         except uniquestate_error:
             print("The crypto currency you entered already exists in your data base, maybe you might want to update it's other data")
     
-  
-
-def cryptocheck(data,new_crypto):
+def cryptocheck(data,new_crypto): 
     
     unique_state=True #boolean
     for i in data:
         if i[0]==new_crypto: #element zero is where names are stored
             unique_state=False
-    
+
     return unique_state
 
 
