@@ -45,7 +45,7 @@ if __name__=="__main__":
                 print('Display Cryptocurrency')
                 displaycrypto(data)
             elif input=='2':
-                print('Add Crytpcurrency')
+                print('Add Cryptocurrency')
                 addcrypto(data)
                 
                 
@@ -56,6 +56,7 @@ if __name__=="__main__":
                 #for this function, you need to return the data list in the function
             elif input=='4':
                 print('Remove Cryptocurrency')
+                removecrypto(data)
                 #for this function, you need to return the data list in the function
             else:
                 raise inputerror
