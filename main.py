@@ -27,6 +27,8 @@ class inputerror(Exception):
 
 
 
+
+
 if __name__=="__main__":
     startingscreen()
     data=readfile() #Initialises program by decoding crypto dataset csv file
@@ -61,8 +63,7 @@ if __name__=="__main__":
         
         except inputerror:
              print('Please input the appropriate menu option')
-        except ValueError:
-            print('Please enter an integer')
+        
         
         
         finally:
