@@ -1,7 +1,4 @@
 #Subprogram to display crypto
-
-
-
 def displaycrypto(data):
     from tabulate import tabulate
     import texttable as tt

@@ -1,18 +1,14 @@
-
-
 ''''
 Unique Features:
 1.Checks Crypto according to the database
 2.Allows user to cancel the data entry process halfway
 3.updates the data variable in the main loop.
-
 '''
 
 class uniquestate_error(Exception):
     """This comes up when the cryptocurrency name is NOT unique"""
 
 def addcrypto(data):
-    
     state_count=0
     run_state=True
     while(run_state==True):
@@ -87,7 +83,7 @@ def addcrypto(data):
         except uniquestate_error:
             print("The crypto currency you entered already exists in your data base, maybe you might want to update it's other data")
     
-    return 0  
+  
 
 def cryptocheck(data,new_crypto):
     

@@ -1,10 +1,6 @@
 #This is the main file#
 #Group Name=Hotel
 
-
-
-
-
 #Internal libraries
 from start_end import *
 #imports all functions from neccassary for start up of program
@@ -30,7 +26,7 @@ class inputerror(Exception):
 if __name__=="__main__":
     startingscreen()
     data=readfile() #Initialises program by decoding crypto dataset csv file
-    main_run_state=0 #for the sake of this main loop, what it does is for the mid program screen to appear or not
+    main_run_state=0 #for the sake of this main loop, this makes sure that the mid program does NOT appear at the end.
 
 
     #In this while loop, the data variable is passed among the different functions
