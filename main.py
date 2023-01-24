@@ -50,6 +50,7 @@ if __name__=="__main__":
 
             elif input=='3':
                 print('Amend CryptoCurrency')
+                ammendcrypto_stage_one(data)
                 #for this function, you need to return the data list in the function
             elif input=='4':
                 print('Remove Cryptocurrency')

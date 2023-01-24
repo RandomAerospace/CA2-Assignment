@@ -54,7 +54,7 @@ def readfile():
             crypto_dataset.append(name_score)
             
 
-        print(crypto_dataset)
+        #print(crypto_dataset)
         return crypto_dataset
         #returns the processed dataset
 
