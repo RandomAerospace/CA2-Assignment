@@ -13,7 +13,7 @@ def processdata(data):
     print(data)
     count=0
     for i in data:
-        print(f'{count} - \t{i[0]}')
+        print(f"{count} - \t{i[0]}") #format the output
         count+=1
     return count
 
