@@ -12,6 +12,8 @@ from ammend_crypto import *
 #imports all functions for ammending cryptocurrency
 from remove_crypto import *
 #imports all functions for removing cryptocurrency
+from cryptoportoflio_statement import * 
+#imports all functions for crypto portoflio statement
 
 '''
 csv file will only be saved upon exit of program where the
@@ -58,7 +60,7 @@ if __name__=="__main__":
                 #for this function, you need to return the data list in the function
             elif input=='5':
                 print('Crypto Portoflio statement')
-                
+                cryptoportoflio_statement(data)
                 #for this function, you need to return the data list in the function
             else:
                 raise inputerror
