@@ -1,7 +1,5 @@
 #Ammend crypto currency
 
-
-
 def ammendcrypto_stage_one(data):
     display_crypto_options()
     #put a function here to process AND SHOW THE DATA
@@ -9,8 +7,7 @@ def ammendcrypto_stage_one(data):
     while (True):
         count=processdata(data)  #This detects how many crypto currencies there are 
         user_input=input(f"Enter 0 to {count}, press e or E to exit: ")
-        
-
+    
         try:
             
             if user_input.upper()== "E":
@@ -25,13 +22,11 @@ def ammendcrypto_stage_one(data):
 
         else:
             index=int(user_input)
-            ammend_crypto_stage_two(data, index)
-
-
+            ammend_crypto_stage_two(data, index) #goes onto next submenu
 
 def ammend_crypto_stage_two(data,index):
      #This stage displays crypto info to be ammended
-     
+
     run_state=True #program flag 1
     while(True):
         print(f'Index:\t{index}')
@@ -65,7 +60,6 @@ def ammend_crypto_stage_two(data,index):
                     ammend_name=str(ammend_name)
                     data[index][0]=ammend_name
                         
-
             elif edit_input=='2':
                     ammend_market_cap=input('Enter new market cap of Crypto:\t')
                     if (str(ammend_market_cap)).upper()=='E':
@@ -76,7 +70,6 @@ def ammend_crypto_stage_two(data,index):
                         ammend_market_cap=str(ammend_market_cap)
                         data[index][1]=ammend_market_cap
                         
-
             elif  edit_input=='3':
                 ammend_quantity_bought=float(input('Enter new quantity bought:\t'))
                 if (str(ammend_quantity_bought)).upper()=='E':
@@ -86,7 +79,6 @@ def ammend_crypto_stage_two(data,index):
                     ammend_quantity_bought=str(ammend_quantity_bought)
                     data[index][2]=ammend_quantity_bought
                         
-
             elif edit_input=='4':
                 ammend_buy_in_price=float(input('Enter new buy in price:\t'))
                 if (str(ammend_buy_in_price)).upper()=='E':
@@ -111,8 +103,6 @@ def display_crypto_options():
     print("")
     print("No - cryptocurrency")
     print("-"*40)
-
-
 
 def processdata(data):
     print(data)

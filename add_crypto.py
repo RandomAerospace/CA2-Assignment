@@ -8,6 +8,9 @@ Unique Features:
 class uniquestate_error(Exception):
     """This comes up when the cryptocurrency name is NOT unique"""
 
+class enterstringplsException():
+    """This comes up when a string is not entered"""
+
 def addcrypto(data):
     state_count=0 #program flag 1
     run_state=True #program flag 2
@@ -32,6 +35,9 @@ def addcrypto(data):
                 addon_market_cap=input('Enter market cap of crypto High,Mid,Low=\t')
                 if addon_market_cap.upper()=='E':
                     run_state=False
+                elif addon_market_cap.isdigit()==True:
+                    print('Please enter High Mid or Low')
+                    assert enterstringplsException()
                  
                 else:
                     state_count+=1
@@ -82,7 +88,11 @@ def addcrypto(data):
         
         except uniquestate_error:
             print("The crypto currency you entered already exists in your data base, maybe you might want to update it's other data")
-    
+        
+        except enterstringplsException:
+            print('Please enter High Mid or Low ')    
+
+
 def cryptocheck(data,new_crypto): 
     
     unique_state=True #boolean

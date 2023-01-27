@@ -37,7 +37,7 @@ if __name__=="__main__":
 
             if input=='E' or input=='e':
                 main_run_state=1
-                encodefile(data)
+                encodefile(data) #writes and saves all changes
                 exitprog()
                 
             elif input=='1':
