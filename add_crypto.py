@@ -11,6 +11,8 @@ class uniquestate_error(Exception):
 class enterstringplsException():
     """This comes up when a string is not entered"""
 
+
+#manually input crypto data, might want to add a path for automatic info filling
 def addcrypto(data):
     state_count=0 #program flag 1
     run_state=True #program flag 2
@@ -22,6 +24,11 @@ def addcrypto(data):
                 if new_crypto.upper()=='E':
                     run_state=False
                      #special state count for premature exits
+
+
+                ##elif for automatic filling and search!
+
+
                 else:
                     unique_state=cryptocheck(data, new_crypto) #returns boolean state, if unique, will be true
                     if unique_state==False:
@@ -102,6 +109,9 @@ def cryptocheck(data,new_crypto):
 
     return unique_state
 
+#def autofill(data)
+#ask customer to input tiker. Program will find ticker and add to the list info such as name,buy in price and market price at that point
+#if applicable, will also put in market cap.(Research what is considered high or low)
 
 
     
