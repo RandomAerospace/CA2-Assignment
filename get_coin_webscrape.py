@@ -25,7 +25,18 @@ def getPrice(ticker):
     coin=yf.Ticker(ticker)
     print(coin.info)
 
+'''    
+def get_crypto_data(crypto_name):
+    api_key = 'your_api_key'
+    url = f'https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?symbol={crypto_name}&CMC_PRO_API_KEY={api_key}'
+    response = requests.get(url)
+    return response.json()
 
+
+crypto_name = input('Enter cryptocurrency name: ')
+crypto_data = get_crypto_data(crypto_name)
+print(crypto_data)
+'''
 
 if __name__=="__main__":
     company_name='Bitcoin'
