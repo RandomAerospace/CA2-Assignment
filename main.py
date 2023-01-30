@@ -27,9 +27,10 @@ class inputerror(Exception):
 
 
 if __name__=="__main__":
-    startingscreen()
     data=readfile() #Initialises program by decoding crypto dataset csv file
     update_live_data(data)
+    startingscreen()
+    
     #add in autoupdate function here
     main_run_state=0 #for the sake of this main loop, this makes sure that the mid program does NOT appear at the end.
 

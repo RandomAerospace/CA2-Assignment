@@ -5,7 +5,7 @@ def displaycrypto(data):
     import texttable as tt 
     tb = tt.Texttable() 
     headers = ["Name", "Market Cap", "Quantity", "Buy Price", "Market Price"]
-    info = data[0:] #start reading from the left side 
+    info = data[0:4] #start reading from the left side 
     print(tabulate(info, headers=headers, tablefmt="fancy_grid", showindex = "always"))
     #other tableformats can be jira, textile, html
     #showindex = "always" is to add index

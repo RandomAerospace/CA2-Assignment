@@ -50,7 +50,7 @@ def getTicker(crypto):
     #'symbol': 'AVAX-USD', 'index': 'quotes', 'score': 21571.0, 'typeDisp': 'Cryptocurrency', 
     #'exchDisp': 'CCC', 'isYahooFinance': True}, {'exchange': 'CCC', 'shortname': 'Avalanche CAD', 'quoteType': 'CRYPTOCURRENCY',
     #'symbol': 'AVAX-CAD', 'index': 'quotes', 'score': 20137.0,
-    
+    print(ticker)
     return ticker
 
 
@@ -63,40 +63,46 @@ def get_crypto_data(crypto_name):
     data= response.json()
     
     #note:data returned is in string
-    price=data['data'][crypto_name][0]['quote']['USD']['price'] 
-    market_cap=data['data'][crypto_name][0]['quote']['USD']['market_cap']
+    price=data['data'][crypto_name][0]['quote']['USD']['price']
     
-    return price,market_cap
+    #maybe implement a classfication algo here to identify high and low
+    #market_cap=data['data'][crypto_name][0]['quote']['USD']['market_cap']
+
+    
+    return price
 
 
 
 #For use to autoupdate prices whenever program is started
 def update_live_data(data):
     print('updating database...')
-    for i in data:
-        
-        company_name=i[0]
-        get_ticker=getTicker(company_name)
-   
-        #Remove the - in the string to get data
-        ticker=[]
-        for x in get_ticker:
-        
-            if x!='-':
-                ticker.append(str(x))
-            else:
-                break
-
-        ticker=''.join(ticker)
-      
-
-        #crypto_data=price,market_cap
-        crypto_data = list(get_crypto_data(ticker))
-        
-        i[4]=crypto_data[0]
-        data[data.index(i)]=i
-        print('.', end='')
     
+    for i in data:
+        if i[5]=='1':
+            company_name=i[0]
+            get_ticker=getTicker(company_name)
+    
+            #Remove the - in the string to get data
+            ticker=[]
+            for x in get_ticker:
+            
+                if x!='-':
+                    ticker.append(str(x))
+                else:
+                    break
+
+            ticker=''.join(ticker)
+        
+
+            #crypto_data=price,market_cap
+            crypto_data = get_crypto_data(ticker)
+            crypto_data="{:.2f}".format(crypto_data)
+            i[4]=str(crypto_data)
+            data[data.index(i)]=i
+            print('.', end='')
+        else:
+            continue
+    print(data)
     return data
 
 #For use in manual operation
