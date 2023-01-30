@@ -31,12 +31,12 @@ def ammend_crypto_stage_two(data,index):
     while(True):
         print(f'Index:\t{index}')
         print(f'1.Name:{data[index][0]}')
-        print(f'Market Cap:\t{data[index][1]}')
-        print(f'Quantity bought:\t{data[index][2]}')
-        print(f'Buy in price:\t{data[index][3]}')
-        print(f'Market Price:\t{data[index][4]}')
+        print(f'2.Market Cap:\t{data[index][1]}')
+        print(f'3.Quantity bought:\t{data[index][2]}')
+        print(f'4.Buy in price:\t{data[index][3]}')
+        print(f'5. Price:\t{data[index][4]}')
         print('E.Edit completed Exit\n')
-        edit_input=input('What do you want to edit')
+        edit_input=input('What do you want to edit?:\t')
         
         try:
                 
@@ -105,7 +105,7 @@ def display_crypto_options():
     print("-"*40)
 
 def processdata(data):
-    print(data)
+
     count=0
     for i in data:
         print(f'{count} - \t{i[0]}')

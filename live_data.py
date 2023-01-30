@@ -54,7 +54,6 @@ def getTicker(crypto):
     #'symbol': 'AVAX-USD', 'index': 'quotes', 'score': 21571.0, 'typeDisp': 'Cryptocurrency', 
     #'exchDisp': 'CCC', 'isYahooFinance': True}, {'exchange': 'CCC', 'shortname': 'Avalanche CAD', 'quoteType': 'CRYPTOCURRENCY',
     #'symbol': 'AVAX-CAD', 'index': 'quotes', 'score': 20137.0,
-    print(ticker)
     return ticker
 
 
@@ -82,8 +81,6 @@ def get_crypto_data(crypto_name):
     elif market_cap<1000000000:
         market_cap='Low'
 
-
-    
     return market_price,market_cap_class
 
 
@@ -93,7 +90,7 @@ def update_live_data(data):
     print('updating database...')
     
     for i in data:
-        if i[5]=='1':
+        if i[5]=='1': #reads update state
             company_name=i[0]
             get_ticker=getTicker(company_name)
     
@@ -114,10 +111,10 @@ def update_live_data(data):
             i[1]=market_cap_class
             i[4]=str(crypto_price)
             data[data.index(i)]=i
-            print('.', end='')
+            print('.')
         else:
             continue
-    print(data)
+    
     return data
 
 #For use in manual operation
