@@ -1,6 +1,12 @@
 #Get coin price and data
 # https://gist.github.com/4f77616973/bd7fc6ed95e6abacafa55084867c44c3
 # https://gist.github.com/bruhbruhroblox/dd9d981c8c37983f61e423a45085e063
+# market cap categories: https://www.statista.com/statistics/1269013/biggest-crypto-per-category-worldwide/#:~:text=High%20cap%3A%20a%20market%20cap,than%20one%20billion%20U.S.%20dollars. 
+
+#High cap: a market cap of 10 billion U.S. dollars or more;
+#Mid cap: a market cap between one billion and 10 billion U.S. dollars;
+#Low cap: a market cap of less than one billion U.S. dollars.
+
 
 #Program flow#
 #1.Get ticker,which is the unique identifier, for example Bitcoin(BTC) can be differentiated from harrypotterobamasonic10inu(BITCOIN)
@@ -57,20 +63,30 @@ def getTicker(crypto):
 
   
 def get_crypto_data(crypto_name):
-    #api_key = 'f8dd4eb7-ca48-4b96-8c6b-e2490a7a2e18' #wai phyo key
-    api_key='2413d5cd-943f-46bd-85bb-ede6e61be260' #terence key
+    api_key = 'f8dd4eb7-ca48-4b96-8c6b-e2490a7a2e18' #wai phyo key
+    #api_key='2413d5cd-943f-46bd-85bb-ede6e61be260' #terence key
     url = f'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol={crypto_name}&CMC_PRO_API_KEY={api_key}'
     response = requests.get(url)
     data= response.json()
     
     #note:data returned is in string
     price=data['data'][crypto_name][0]['quote']['USD']['price']
-    
+    market_price="{:.2f}".format(price)
+
     #maybe implement a classfication algo here to identify high and low
-    #market_cap=data['data'][crypto_name][0]['quote']['USD']['market_cap']
+    market_cap=data['data'][crypto_name][0]['quote']['USD']['market_cap']
+
+    #market cap classification
+    if market_cap>10000000000:
+        market_cap_class='High'
+    elif market_cap>1000000000 and market_cap<10000000000:
+        market_cap_class='Mid'
+    elif market_cap<1000000000:
+        market_cap='Low'
+
 
     
-    return price
+    return market_price,market_cap_class
 
 
 
@@ -95,10 +111,10 @@ def update_live_data(data):
             ticker=''.join(ticker)
         
 
-            #crypto_data=price,market_cap
-            crypto_data = get_crypto_data(ticker)
-            crypto_data="{:.2f}".format(crypto_data)
-            i[4]=str(crypto_data)
+            #crypto_data=price,market_cap_class
+            crypto_price,market_cap_class = get_crypto_data(ticker)
+            i[1]=market_cap_class
+            i[4]=str(crypto_price)
             data[data.index(i)]=i
             print('.', end='')
         else:
@@ -107,7 +123,7 @@ def update_live_data(data):
     return data
 
 #For use in manual operation
-def add_live_data():
+def add_live_data(data):
     company_name=input('Crypto name:')
     #get's output as BTC-USD
     get_ticker=getTicker(company_name)

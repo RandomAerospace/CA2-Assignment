@@ -4,6 +4,7 @@ Unique Features:
 2.Allows user to cancel the data entry process halfway
 3.updates the data variable in the main loop.
 '''
+from live_data import *
 
 class uniquestate_error(Exception):
     """This comes up when the cryptocurrency name is NOT unique"""
@@ -16,17 +17,25 @@ class enterstringplsException():
 def addcrypto(data):
     state_count=0 #program flag 1
     run_state=True #program flag 2
+    update_state=0 #program flag 3 in tandem with csv
     while(run_state==True):
         try:
             #define new parameters
+            
+
             if state_count==0 and run_state==True:
+                print('press E to cancel at any point')
+                live_data_or_not=input("Do you want your cryptocurrency to be automatically updated? y/n")
+                if new_crypto.upper()=='E':
+                    run_state=False
+                     #special state count for premature exits
+                
+        
+            if state_count==1 and run_state==True:
                 new_crypto=input('Enter Cryptocurrency name or press E to cancel at any point=\t')
                 if new_crypto.upper()=='E':
                     run_state=False
                      #special state count for premature exits
-
-
-                ##elif for automatic filling and search!
 
 
                 else:
@@ -38,7 +47,7 @@ def addcrypto(data):
                         state_count+=1
                     #check if crypto currency is there
                 
-            elif state_count==1  and run_state==True :
+            elif state_count==2  and run_state==True and update_state==0 :
                 addon_market_cap=input('Enter market cap of crypto High,Mid,Low=\t')
                 if addon_market_cap.upper()=='E':
                     run_state=False
@@ -48,10 +57,12 @@ def addcrypto(data):
                  
                 else:
                     state_count+=1
+          
+
                 
             #Input takes in float to go through a value type check.
             #it then coverts back to string for the sake of ease of data processing in other functions and saving data
-            elif state_count==2  and run_state==True:
+            elif state_count==3  and run_state==True:
                 new_quantity=float(input('enter quantity of crypto bought=\t'))
                 if (str(new_quantity)).upper()=='E':
                     run_state=False
@@ -60,7 +71,7 @@ def addcrypto(data):
                     new_quantity=str(new_quantity)
                     state_count+=1
 
-            elif state_count==3  and run_state==True:
+            elif state_count==4  and run_state==True:
                 new_buy_in=float(input('enter buy in price of crypto=\t'))
                 if (str(new_buy_in)).upper()=='E':
                     run_state=False
@@ -69,7 +80,7 @@ def addcrypto(data):
                     new_buy_in=str(new_buy_in)
                     state_count+=1
 
-            elif state_count==4  and run_state==True:
+            elif state_count==5  and run_state==True:
                 new_market_price=float(input('Enter market price crpyto=\t'))
                 if (str(new_market_price)).upper()=='E':
                     run_state=False
@@ -79,7 +90,7 @@ def addcrypto(data):
                     state_count+=1
                 #print(state_count)
           
-            elif state_count==5: 
+            elif state_count==6: 
                 add_data=[new_crypto,addon_market_cap,new_quantity,new_buy_in,new_market_price]
                 #print(add_data)
                 data.append(add_data)   
@@ -87,7 +98,7 @@ def addcrypto(data):
                 return data
                 #print(run_state)
 
-            elif state_count==6:
+            elif state_count==7:
                 run_state=False
 
         except ValueError:
