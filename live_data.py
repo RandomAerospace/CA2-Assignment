@@ -57,7 +57,8 @@ def getTicker(crypto):
 
   
 def get_crypto_data(crypto_name):
-    api_key = 'f8dd4eb7-ca48-4b96-8c6b-e2490a7a2e18'
+    #api_key = 'f8dd4eb7-ca48-4b96-8c6b-e2490a7a2e18' #wai phyo key
+    api_key='2413d5cd-943f-46bd-85bb-ede6e61be260' #terence key
     url = f'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol={crypto_name}&CMC_PRO_API_KEY={api_key}'
     response = requests.get(url)
     data= response.json()

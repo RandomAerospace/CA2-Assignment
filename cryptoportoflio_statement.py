@@ -1,9 +1,9 @@
 #Crypto Portoflio statement
 
 def cryptoportoflio_statement(data):
-    from tabulate import tabulate  
+    from tabulate import tabulate #formats and prints the information using tabulate
     import texttable as tt 
-    tb = tt.Texttable() 
+    tb = tt.Texttable() #texttable is table for the data
     
     #Total_Invested = Quantity*Buy_In_Price
     #Invested_Portfolio_Size = Percentage_of_Total_Invested/ Sum_of_Total_Invested
