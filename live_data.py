@@ -14,7 +14,7 @@ import time
 
 
 #Get ticker, can only be done by webscraping! Yahoo API is no longer working but can use a static site to search names and tickers
-def getTicker(company_name):
+def getTicker(crypto):
     yfinance = "https://query2.finance.yahoo.com/v1/finance/search"
 
     
@@ -36,7 +36,7 @@ def getTicker(company_name):
     These are paramters for Yahoo finance API 
     '''
 
-    params = {"q": company_name, "quotes_count": 1, "country": "United States"}
+    params = {"q": crypto, "quotes_count": 1, "country": "United States"}
 
     #HTTP headers are key-value pairs that provide additional information about the request to the server.
     #In this code, the headers dictionary contains a single header User-Agent that provides information about the client that is sending the request
@@ -45,17 +45,15 @@ def getTicker(company_name):
     #data type is dictionary
     data = res.json()
     
-    company_code = data['quotes'][0]['symbol']
+    ticker= data['quotes'][0]['symbol']
     #quotes': [{'exchange': 'CCC', 'shortname': 'Avalanche USD', 'quoteType': 'CRYPTOCURRENCY', 
     #'symbol': 'AVAX-USD', 'index': 'quotes', 'score': 21571.0, 'typeDisp': 'Cryptocurrency', 
     #'exchDisp': 'CCC', 'isYahooFinance': True}, {'exchange': 'CCC', 'shortname': 'Avalanche CAD', 'quoteType': 'CRYPTOCURRENCY',
     #'symbol': 'AVAX-CAD', 'index': 'quotes', 'score': 20137.0,
-    print(company_code)
-    return company_code
+    
+    return ticker
 
-def getPrice(ticker):
-    coin=yf.Ticker(ticker)
-    print(coin.info)
+
 
   
 def get_crypto_data(crypto_name):
@@ -72,9 +70,37 @@ def get_crypto_data(crypto_name):
 
 
 
+#For use to autoupdate prices whenever program is started
+def update_live_data(data):
+    print('updating database...')
+    for i in data:
+        
+        company_name=i[0]
+        get_ticker=getTicker(company_name)
+   
+        #Remove the - in the string to get data
+        ticker=[]
+        for x in get_ticker:
+        
+            if x!='-':
+                ticker.append(str(x))
+            else:
+                break
 
+        ticker=''.join(ticker)
+      
 
-if __name__=="__main__":
+        #crypto_data=price,market_cap
+        crypto_data = list(get_crypto_data(ticker))
+        
+        i[4]=crypto_data[0]
+        data[data.index(i)]=i
+        print('.', end='')
+    
+    return data
+
+#For use in manual operation
+def add_live_data():
     company_name=input('Crypto name:')
     #get's output as BTC-USD
     get_ticker=getTicker(company_name)
@@ -96,9 +122,15 @@ if __name__=="__main__":
 
 '''
 Coin market cap API json dict:
-{'status': {'timestamp': '2023-01-30T07:43:35.609Z', 'error_code': 0, 'error_message': None, 'elapsed': 26, 'credit_count': 1, 'notice': None}, 
-'data': {'BTC': [{'id': 1, 'name': 'Bitcoin', 'symbol': 'BTC', 'slug': 'bitcoin', 'num_market_pairs': 9943, 'date_added': '2013-04-28T00:00:00.000Z', 
-'tags': [{'slug': 'mineable', 'name': 'Mineable', 'category': 'OTHERS'}, {'slug': 'pow', 'name': 'PoW', 'category': 'ALGORITHM'}, 
+
+{
+'status': {'timestamp': '2023-01-30T07:43:35.609Z', 'error_code': 0, 'error_message': None, 'elapsed': 26, 'credit_count': 1, 'notice': None}, 
+'data': 
+        {'BTC':
+            [
+                {'id': 1, 'name': 'Bitcoin', 'symbol': 'BTC', 'slug': 'bitcoin', 'num_market_pairs': 9943, 'date_added': '2013-04-28T00:00:00.000Z', 
+                'tags': [
+                            {'slug': 'mineable', 'name': 'Mineable', 'category': 'OTHERS'}, {'slug': 'pow', 'name': 'PoW', 'category': 'ALGORITHM'}, 
 {'slug': 'sha-256', 'name': 'SHA-256', 'category': 'ALGORITHM'}, {'slug': 'store-of-value', 'name': 'Store Of Value', 'category': 'CATEGORY'},
  {'slug': 'state-channel', 'name': 'State Channel', 'category': 'CATEGORY'}, {'slug': 'coinbase-ventures-portfolio', 'name': 'Coinbase Ventures Portfolio', 
  'category': 'CATEGORY'}, {'slug': 'three-arrows-capital-portfolio', 'name': 'Three Arrows Capital Portfolio', 'category': 'CATEGORY'},
@@ -122,8 +154,15 @@ Coin market cap API json dict:
     {'slug': 'placeholder-ventures-portfolio','name': 'Placeholder Ventures Portfolio', 'category': 'CATEGORY'}, 
     {'slug': 'pantera-capital-portfolio', 'name': 'Pantera Capital Portfolio', 'category': 'CATEGORY'}, 
     {'slug': 'multicoin-capital-portfolio', 'name': 'Multicoin Capital Portfolio', 'category': 'CATEGORY'}, 
-    {'slug': 'paradigm-portfolio', 'name': 'Paradigm Portfolio', 'category': 'CATEGORY'}]
-    , 'max_supply': 21000000, 'circulating_supply': 19276812, 'total_supply': 19276812, 'is_active': 1, 'platform': None, 'cmc_rank': 1, 'is_fiat': 0, 'self_reported_circulating_supply': None, 'self_reported_market_cap': None, 'tvl_ratio': None, 'last_updated': '2023-01-30T07:42:00.000Z', 
-    'quote': {'USD': {'price': 23659.014680229506, 'volume_24h': 25933055076.565052, 'volume_change_24h': 48.3009, 'percent_change_1h': -0.1345927, 'percent_change_24h': 1.94096157, 'percent_change_7d': 4.12809924, 'percent_change_30d': 42.84277837, 'percent_change_60d': 38.21966424, 'percent_change_90d': 14.93850151, 'market_cap': 456070378096.0243, 'market_cap_dominance': 42.5073, 'fully_diluted_market_cap': 496839308284.82, 'tvl': None, 'last_updated': '2023-01-30T07:42:00.000Z'
-    }}}]}}
+    {'slug': 'paradigm-portfolio', 'name': 'Paradigm Portfolio', 'category': 'CATEGORY'}
+    ]
+    ,'max_supply': 21000000, 'circulating_supply': 19276812, 'total_supply': 19276812, 'is_active': 1, 'platform': None, 'cmc_rank': 1, 'is_fiat': 0, 'self_reported_circulating_supply': None, 'self_reported_market_cap': None, 'tvl_ratio': None, 'last_updated': '2023-01-30T07:42:00.000Z', 
+    'quote':        {'USD':
+                        {'price': 23659.014680229506, 'volume_24h': 25933055076.565052, 'volume_change_24h': 48.3009, 'percent_change_1h': -0.1345927, 'percent_change_24h': 1.94096157, 'percent_change_7d': 4.12809924, 'percent_change_30d': 42.84277837, 'percent_change_60d': 38.21966424, 'percent_change_90d': 14.93850151, 'market_cap': 456070378096.0243, 'market_cap_dominance': 42.5073, 'fully_diluted_market_cap': 496839308284.82, 'tvl': None, 'last_updated': '2023-01-30T07:42:00.000Z'
+                        }
+                    }
+                }
+            ]
+        }
+    }
 '''
