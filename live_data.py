@@ -13,8 +13,6 @@
 #2.Get market data
 #3.Feed back market data to main loop
 
-
-import yfinance as yf
 import requests 
 import time
 
