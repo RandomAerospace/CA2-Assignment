@@ -66,6 +66,7 @@ def get_crypto_data(crypto_name):
     response = requests.get(url)
     data= response.json()
     
+    
     #note:data returned is in string
     price=data['data'][crypto_name][0]['quote']['USD']['price']
     market_price="{:.2f}".format(price)
@@ -118,14 +119,14 @@ def update_live_data(data):
     return data
 
 #For use in manual operation
-def add_live_data(data):
-    company_name=input('Crypto name:')
-    #get's output as BTC-USD
-    get_ticker=getTicker(company_name)
+def add_live_data(crypto_ticker):
+    
+    
+    
    
    #Remove the - in the string to get data
     ticker=[]
-    for i in get_ticker:
+    for i in crypto_ticker:
         
         if i!='-':
             ticker.append(str(i))
@@ -133,10 +134,12 @@ def add_live_data(data):
             break
 
     ticker=''.join(ticker)
-    print(ticker)
+    
 
-    crypto_data = list(get_crypto_data(ticker))
-    print(crypto_data)
+    market_price,market_cap_class=get_crypto_data(ticker)
+
+    return market_price, market_cap_class
+
 
 '''
 Coin market cap API json dict:
