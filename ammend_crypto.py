@@ -28,7 +28,7 @@ def ammend_crypto_stage_two(data,index):
      #This stage displays crypto info to be ammended
 
     run_state=True #program flag 1
-    while(True):
+    while(run_state==True):
         print(f'Index:\t{index}')
         print(f'1.Name:{data[index][0]}')
         print(f'2.Market Cap:\t{data[index][1]}')
@@ -43,7 +43,7 @@ def ammend_crypto_stage_two(data,index):
                 if edit_input.upper() == "E":
                     return data
                     print("Exiting to menu...")
-                    exit()
+                    run_state=False
                 if int(edit_input)<0 or int(edit_input)>5 : #input validation
                     raise ValueError
 
