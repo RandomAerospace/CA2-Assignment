@@ -54,20 +54,3 @@ def cryptoportoflio_statement(data):
 
     info.append(['','SUM',' '," " ,' ',total_invested_sum,'',total_current_value_sum,profit_loss_sum,''])    
     print(tabulate(info, headers=headers, tablefmt="fancy_grid"))
-
-'''
-    sum_of_profit_loss = 0
-    
-    sum=[]
-    for s in range(len(data)):
-        sum_of_total_invested = data[i][5]
-        sum_of_total_current_value = data[i][7]
-        sum_of_profit_loss += total_current_value-total_invested
-        sum.append([sum_of_total_invested, sum_of_total_current_value, sum_of_profit_loss])
-
-
-print("Sum:", 
-    "\n"+str(sum_of_total_invested), 
-    "\n"+str(sum_of_total_current_value),
-    "\n"+str(sum_of_profit_loss) )
-'''
