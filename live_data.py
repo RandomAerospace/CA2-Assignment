@@ -48,8 +48,12 @@ def getTicker(crypto):
 
     #data type is dictionary
     data = res.json()
-    
-    ticker= data['quotes'][0]['symbol']
+    try:
+
+        ticker= data['quotes'][0]['symbol']
+    except IndexError:
+        print("Crypto currency could not be found")
+        return False
     #quotes': [{'exchange': 'CCC', 'shortname': 'Avalanche USD', 'quoteType': 'CRYPTOCURRENCY', 
     #'symbol': 'AVAX-USD', 'index': 'quotes', 'score': 21571.0, 'typeDisp': 'Cryptocurrency', 
     #'exchDisp': 'CCC', 'isYahooFinance': True}, {'exchange': 'CCC', 'shortname': 'Avalanche CAD', 'quoteType': 'CRYPTOCURRENCY',
