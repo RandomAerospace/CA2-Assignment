@@ -50,7 +50,6 @@ def addcrypto(data):
                     assert enterstringplsException()
 
 
-
             if state_count==1 and run_state==True:
                 new_crypto=input('Enter Cryptocurrency name:\t')
                 
@@ -110,8 +109,7 @@ def addcrypto(data):
                 else:
                     state_count+=1
           
-
-                
+    
             #Input takes in float to go through a value type check.
             #it then coverts back to string for the sake of ease of data processing in other functions and saving data
             elif state_count==3  and run_state==True:
@@ -137,15 +135,10 @@ def addcrypto(data):
                     print("Please enter a digit")
                     assert enterdigitplsException()
              
-
-
             elif state_count==5 and run_state==True and update_state==1:
                
                 print(f'Market Price of Crypto:\t{new_market_price}')
                 state_count+=1
-
-
-
 
             elif state_count==5  and run_state==True:
                 new_market_price=input('Enter market price crpyto=\t')
@@ -228,18 +221,3 @@ def check_numerical(input):
             return True
         except ValueError:
             return False
-
-    
-   
-
-#def autofill(data)
-#ask customer to input tiker. Program will find ticker and add to the list info such as name,buy in price and market price at that point
-#if applicable, will also put in market cap.(Research what is considered high or low)
-
-
-    
-
-
-
-    
-
