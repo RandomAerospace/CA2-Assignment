@@ -1,23 +1,13 @@
 #Subprogram to display crypto
-
-
-
-
-
-
-
-
 def display_sort_options(data):
     
     #process market cap data from High, Mid, Low to 1,2,3 to make sorting easier.
     data=data_process_market_cap(data)
     
-    
     #after that, sorting is better done with dictionaries which have keys. 
     #Can use list sorting through keys with a user made method
     data=list_to_dict(data)
-    
-   
+
     print("1. Market Cap")
     print("2. Quantity")
     print("3. Buy Price")
@@ -84,7 +74,7 @@ def display_sort_options(data):
                 
                 elif sort_order==2:
                     
-                    data.sort(key=et_market_price,reverse=True)
+                    data.sort(key=get_market_price,reverse=True)
                 
                 data_sorted=dict_to_list(data)
                 data_output=data_process_market_cap_output(data_sorted)
@@ -122,7 +112,8 @@ def data_process_market_cap_output(data):
 
     return data
 
-
+#this functions turns the list into a dictionary for sorting.
+#additionally, this function turns strings into floats for the sake of sorting
 def list_to_dict(data):
 
     keys=['NAME','MCAP','Q','BUYP','MPRICE']
@@ -137,7 +128,7 @@ def list_to_dict(data):
             
         crypto_dictionary_sub= dict(zip(keys, x))
         crypto_dictonary_list.append(crypto_dictionary_sub)
-        print(crypto_dictonary_list)
+        
 
     return crypto_dictonary_list
 
@@ -150,7 +141,7 @@ def dict_to_list(data):
     return main_list
         
 
-
+#sorting methods for sort(key=)
 def get_market_cap(element):
     return element['MCAP']
 
