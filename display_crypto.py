@@ -40,37 +40,38 @@ def displaycrypto(data):
         if sort_options == 1:
             sorted_data = sort_crypto_data(data, "Name") #sort by Name
             print("Sorted data by Name!")
-        for item in sorted_data:
-            print(f"{item['Name']}")
+            for item in sorted_data:
+                print(f"{item['Name']}")
             # print(f"{item['symbol']}: {item['Name']}")
 
-        if sort_options == 2:
+        elif sort_options == 2:
             sorted_data = sort_crypto_data(data, "Market Cap") #sort by Market Cap
             print("Sorted data by Market Cap!")
-        for item in sorted_data:
-            print(f"{item['Market Cap']}")
+            for item in sorted_data:
+                print(f"{item['Market Cap']}")
 
-        if sort_options == 3:
+        elif sort_options == 3:
             sorted_data = sort_crypto_data(data, "Quantity") #sort by Quantity
             print("Sorted data by Quantity!")
-        for item in sorted_data:
-            print(f"{item['Quantity']}")
+            for item in sorted_data:
+                print(f"{item['Quantity']}")
 
-        if sort_options == 4:
+        elif sort_options == 4:
             sorted_data = sort_crypto_data(data, "Buy Price") #sort by Buy Price
             print("Sorted data by Buy Price!")
-        for item in sorted_data:
-            print(f"{item['Buy Price']}")
+            for item in sorted_data:
+                print(f"{item['Buy Price']}")
         
-        if sort_options == 5:
+        elif sort_options == 5:
             sorted_data = sort_crypto_data(data, "Market Price") #sort by Market Price
             print("Sorted data by Market Price!")
-        for item in sorted_data:
-            print(f"{item['Market Price']}")
+            for item in sorted_data:
+                print(f"{item['Market Price']}")
         
-        if sort_options == "e" or sort_options == "E":
+        elif sort_options == "e" or sort_options == "E":
             print("Exiting to menu...")
             break
+            
         index = int(sort_options)
         if index<0 or index>5:
                 raise ValueError
