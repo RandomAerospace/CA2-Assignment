@@ -40,6 +40,7 @@ if __name__=="__main__":
     while(True):
         try:
             input=input('select an option:\t')
+           
 
             if input=='E' or input=='e':
                 main_run_state=1
@@ -48,7 +49,12 @@ if __name__=="__main__":
                 
             elif input=='1':
                 print('Display Cryptocurrency')
-                displaycrypto(data)
+                data_for_display=data.copy()
+                displaycrypto_raw(data_for_display)
+                
+                data_sorted=display_sort_options(data_for_display)
+                displaycrypto(data_sorted)
+                
 
             elif input=='2':
                 print('Add Cryptocurrency')
@@ -79,6 +85,7 @@ if __name__=="__main__":
             if main_run_state==0:
                 midscreen()
             del input
+            data=readfile()
     #saves file IF AND ONLY IF PROGRAM EXITS LOOp
     
 
