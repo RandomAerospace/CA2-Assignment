@@ -1,4 +1,6 @@
 #Subprogram to display crypto
+
+
 def display_sort_options(data):
     
     #process market cap data from High, Mid, Low to 1,2,3 to make sorting easier.
@@ -12,85 +14,104 @@ def display_sort_options(data):
     print("2. Quantity")
     print("3. Buy Price")
     print("4. Market Price")
-    print("5.press E to Exit to Menu")
+    print("press E to Exit to Menu")
     
     run_state=True
 
     while(run_state==True):
-        sort_options = int(input("Choose options to sort: "))
-        index = int(sort_options)
+        sort_options = input("Choose options to sort: ")
+        
+        
         try:
-            if sort_options == 1: #market cap
+
+            
+                
+            if sort_options.upper()=='E':
+                return 0
+                run_state=False   
+        
+            if int(sort_options)<0 or int(sort_options)>4:
+                raise ValueError()
+
+            elif sort_options == '1': #market cap
                 sort_order=int(input('Increasing order:1  Decreasing order:2 \t'))
                 if sort_order==1:
-                
+                    
                     data.sort(key=get_market_cap)
-                
+                    
                 elif sort_order==2:
 
                     data.sort(key=get_market_cap,reverse=True)
-                
+                    
                 data_sorted=dict_to_list(data)
                 data_output=data_process_market_cap_output(data_sorted)
-                    
+                        
                 return data_output
-                    
-
-            elif sort_options == 2: #quantity bought, this needs addiitonal processing for numbers
-                sort_order=int(input('Increasing order:1  Decreasing order:2 \t'))
-                if sort_order==1:
-                
-                    data.sort(key=get_quantity)
-                
-                elif sort_order==2:
-                    
-                    data.sort(key=get_quantity,reverse=True)
-                
-                data_sorted=dict_to_list(data)
-                data_output=data_process_market_cap_output(data_sorted)
-                    
-                return data_output
-
-            elif sort_options == 3: #buy price
-                sort_order=int(input('Increasing order:1  Decreasing order:2 \t'))
-                if sort_order==1:
-                
-                    data.sort(key=get_buy_in_price)
-                
-                elif sort_order==2:
-                    
-                    data.sort(key=get_buy_in_price,reverse=True)
-                
-                data_sorted=dict_to_list(data)
-                data_output=data_process_market_cap_output(data_sorted)
-                    
-                return data_output
-            
-            elif sort_options == 4:
-                sort_order=int(input('Increasing order:1  Decreasing order:2 \t'))
-                if sort_order==1:
-                
-                    data.sort(key=get_market_price)
-                
-                elif sort_order==2:
-                    
-                    data.sort(key=get_market_price,reverse=True)
-                
-                data_sorted=dict_to_list(data)
-                data_output=data_process_market_cap_output(data_sorted)
-                    
-                return data_output
-            
-            elif sort_options == "e" or sort_options == "E":
-                print("Exiting to menu...")
                 break
+                        
+
+            elif sort_options == '2': #quantity bought, this needs addiitonal processing for numbers
+                sort_order=int(input('Increasing order:1  Decreasing order:2 \t'))
+                if sort_order==1:
+                    
+                    data.sort(key=get_quantity)
+                    
+                elif sort_order==2:
+                        
+                    data.sort(key=get_quantity,reverse=True)
+                    
+                data_sorted=dict_to_list(data)
+                data_output=data_process_market_cap_output(data_sorted)
+                        
+                return data_output
+                break
+
+            elif sort_options == '3': #buy price
+                sort_order=int(input('Increasing order:1  Decreasing order:2 \t'))
+                if sort_order==1:
+                    
+                        data.sort(key=get_buy_in_price)
+                    
+                elif sort_order==2:
+                        
+                    data.sort(key=get_buy_in_price,reverse=True)
+                    
+                data_sorted=dict_to_list(data)
+                data_output=data_process_market_cap_output(data_sorted)
+                        
+                return data_output
+                break
+                
+            elif sort_options =='4':
+                sort_order=int(input('Increasing order:1  Decreasing order:2 \t'))
+                if sort_order==1:
+                    
+                    data.sort(key=get_market_price)
+                    
+                elif sort_order==2:
+                        
+                    data.sort(key=get_market_price,reverse=True)
+                    
+                data_sorted=dict_to_list(data)
+                data_output=data_process_market_cap_output(data_sorted)
+                        
+                return data_output
+                break
+            
+
+                
+
+            
+
+
+        except ValueError:
+            print('please put in an integer please')
+        
+  
+                
+        
     
-            elif index<0 or index>5:
-                raise ValueError
-        except:
-            print('')
-
-
+#change to integers for the sake of sorting
 def data_process_market_cap(data):
     for i in data:
         if i[1]=='High':
@@ -101,6 +122,7 @@ def data_process_market_cap(data):
             i[1]==3
     return data
 
+#change back to original for presentation of data
 def data_process_market_cap_output(data):
     for i in data:
         if i[1]==1:
@@ -121,7 +143,7 @@ def list_to_dict(data):
     
     for x in data:
         for y in x:
-            print(y)
+            
         
             if check_numerical(y)==True:
                 x[x.index(y)]=float(y)
@@ -161,14 +183,19 @@ def displaycrypto_raw(data):
     #import texttable package as texttable enables a cell-like structure in which each data is stored and is similar to CSV files.
     import texttable as tt 
     tb = tt.Texttable() 
-   
+    count=1
     for i in data:
         i.remove(i[5])
+        i.insert(0,count)
+        count+=1
    
-    headers = ["Name", "Market Cap", "Quantity", "Buy Price", "Market Price"]
-    info = data[0:] #start reading from the left side  
-    print(tabulate(info, headers=headers, tablefmt="fancy_grid", showindex = "always"))
     
+    headers = ['No',"Name", "Market Cap", "Quantity", "Buy Price", "Market Price"]
+    info = data[:] #start reading from the left side  
+    print(tabulate(info, headers=headers, tablefmt="fancy_grid",numalign="right"))
+    for i in data:
+        i.remove(i[0])
+  
     
     #other tableformats can be jira, textile, html
     #showindex = "always" is to add index
@@ -179,12 +206,18 @@ def displaycrypto(data):
     #import texttable package as texttable enables a cell-like structure in which each data is stored and is similar to CSV files.
     import texttable as tt 
     tb = tt.Texttable() 
-
+    count=1
+    for i in data:
+        i.insert(0,count)
+        count+=1
+        
    
-    headers = ["Name", "Market Cap", "Quantity", "Buy Price", "Market Price"]
-    info = data[0:] #start reading from the left side  
-    print(tabulate(info, headers=headers, tablefmt="fancy_grid", showindex = "always"))
-    
+    headers = ['No.',"Name", "Market Cap", "Quantity", "Buy Price", "Market Price"]
+    info = data[:] #start reading from the left side  
+    print(tabulate(info, headers=headers, tablefmt="fancy_grid",numalign="right"))
+    for i in data:
+        i.remove(i[0])
+       
     
     #other tableformats can be jira, textile, html
     #showindex = "always" is to add index

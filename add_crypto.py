@@ -13,10 +13,10 @@ from live_data import *
 class uniquestate_error(Exception):
     """This comes up when the cryptocurrency name is NOT unique"""
 
-class enterstringplsException():
+class enterstringplsException(Exception):
     """This comes up when a string is not entered"""
 
-class enterdigitplsException():
+class enterdigitplsException(Exception):
     """This comes up when a digit is not entered"""
 
 
@@ -29,11 +29,9 @@ def addcrypto(data):
     while(run_state==True):
         try:
         
-            
-
             if state_count==0 and run_state==True:
                 
-                live_data_or_not=input("Do you want your cryptocurrency to be automatically updated? y/n")
+                live_data_or_not=input("Do you want your cryptocurrency to be automatically updated? y/n\t")
                 if live_data_or_not.upper()=='E':
                     run_state=False
                      #special state count for premature exits
@@ -50,7 +48,7 @@ def addcrypto(data):
                     assert enterstringplsException()
 
 
-            if state_count==1 and run_state==True:
+            elif state_count==1 and run_state==True:
                 new_crypto=input('Enter Cryptocurrency name:\t')
                 
                 if new_crypto.upper()=='E':
@@ -81,7 +79,7 @@ def addcrypto(data):
                         if new_ticker==False:
                             state_count=0
                         else:
-                            ticker_acceptance=input(f'Woop, we found this ticker {new_ticker} is this what you want? y/n')
+                            ticker_acceptance=input(f'Woop, we found this ticker {new_ticker} is this what you want? y/n\t')
 
                             if ticker_acceptance.upper()=='Y':
                                 state_count+=1 #proceed to get market data (state count=2)
@@ -95,19 +93,32 @@ def addcrypto(data):
                 print('Getting market data..')
                 new_market_price,addon_market_cap=add_live_data(new_ticker)
                 print(f'Market Cap of Crypto:{addon_market_cap}')
+                print(f'Market Price of Crypto:\t{new_market_price}')
                 state_count+=1
 
             elif state_count==2  and run_state==True and update_state==0 :
-                addon_market_cap=input('Enter market cap of crypto High,Mid,Low=\t')
-                if (str(addon_market_cap)).upper()=='E':
+                addon_market_cap_input=int(input('Enter in numbers, the market cap of crypto High=1,Mid=2,Low=3 :\t'))
+                if (str(addon_market_cap_input)).upper()=='E':
                     run_state=False
-                elif check_numerical(addon_market_cap)==True:
+                elif addon_market_cap_input<0 or addon_market_cap_input>3:
+                    print('Please enter a number between 1 and 3')
+                    assert enterdigitplsException()
+
+                elif check_numerical(addon_market_cap_input)==False:
                     print('Please enter High Mid or Low')
                     assert enterstringplsException()
                     #make sure it is also high mid or low
-                 
                 else:
-                    state_count+=1
+                    if addon_market_cap_input==1:
+                        addon_market_cap='High'
+                        state_count+=1
+                    elif addon_market_cap_input==2:
+                        addon_market_cap='Mid'
+                        state_count+=1
+                    elif addon_market_cap_input==3:
+                        addon_market_cap='Low'
+                        state_count+=1
+                    
           
     
             #Input takes in float to go through a value type check.
@@ -135,12 +146,10 @@ def addcrypto(data):
                     print("Please enter a digit")
                     assert enterdigitplsException()
              
-            elif state_count==5 and run_state==True and update_state==1:
-               
-                print(f'Market Price of Crypto:\t{new_market_price}')
+            elif state_count==5 and update_state==1:
                 state_count+=1
 
-            elif state_count==5  and run_state==True:
+            elif state_count==5 and run_state==True and update_state==0:
                 new_market_price=input('Enter market price crpyto=\t')
                 if (str(new_market_price)).upper()=='E':
                     run_state=False
@@ -166,25 +175,31 @@ def addcrypto(data):
                 else:
                     update_bool=False
                     print(f'Automatic updates?:\t{update_bool}')
+                state_count+=1
 
+            elif state_count==7:
                 user_restart_input=input('Y: save changes N:Restart from beginning')
-
+                print(state_count)
                 if user_restart_input.upper()=='N':
                     state_count=0
                 elif user_restart_input.upper()=='Y':
                     state_count+=1
+                    
                 else:
                     print('Please enter Y or N')
                     assert enterstringplsException()
 
 
                 
-            elif state_count==7:
+            elif state_count==8:
+                update_state=str(update_state)
                 add_data=[new_crypto,addon_market_cap,new_quantity,new_buy_in,new_market_price,update_state]
-                #print(add_data)
+                print(add_data)
                 data.append(add_data)   
-                run_state=False
+                print(data)
+                
                 return data
+                run_state=False
                 #print(run_state)
 
         except ValueError:

@@ -2,10 +2,12 @@
 
 def ammendcrypto_stage_one(data):
     display_crypto_options()
-    #put a function here to process AND SHOW THE DATA
-     
+
+    #This detects how many crypto currencies there are
+    count=processdata(data) 
+    
     while (True):
-        count=processdata(data)  #This detects how many crypto currencies there are 
+          
         user_input=input(f"Enter 0 to {count}, press e or E to exit: ")
     
         try:

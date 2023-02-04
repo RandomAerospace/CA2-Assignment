@@ -28,6 +28,7 @@ class inputerror(Exception):
 
 if __name__=="__main__":
     data=readfile() #Initialises program by decoding crypto dataset csv file
+    
     #update_live_data(data)
     startingscreen()
     
@@ -51,22 +52,29 @@ if __name__=="__main__":
                 print('Display Cryptocurrency')
                 data_for_display=data.copy()
                 displaycrypto_raw(data_for_display)
+                print(data)
                 
                 data_sorted=display_sort_options(data_for_display)
-                displaycrypto(data_sorted)
+                if data_sorted==0:
+                    continue
+                else:
+                    displaycrypto(data_sorted)
                 
-
+                
             elif input=='2':
                 print('Add Cryptocurrency')
                 addcrypto(data)
+                encodefile(data)
 
             elif input=='3':
                 print('Amend CryptoCurrency')
                 ammendcrypto_stage_one(data)
+                encodefile(data)
                 #for this function, you need to return the data list in the function
             elif input=='4':
                 print('Remove Cryptocurrency')
                 removecrypto(data)
+                encodefile(data)
                 #for this function, you need to return the data list in the function
             elif input=='5':
                 print('Crypto Portoflio statement')
@@ -86,6 +94,6 @@ if __name__=="__main__":
                 midscreen()
             del input
             data=readfile()
-    #saves file IF AND ONLY IF PROGRAM EXITS LOOp
+    
     
 

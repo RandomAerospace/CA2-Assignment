@@ -24,10 +24,11 @@ def removecrypto(data):
     
     display_crypto_options()
     #put a function here to process AND SHOW THE DATA
-     
+    count=processdata(data)
     while (True):
+        
         try:
-            count=processdata(data)  
+             
             user_input=input(f"Enter 0 to {count}, press e or E to exit: ")
             
 
