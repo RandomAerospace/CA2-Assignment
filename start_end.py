@@ -31,7 +31,7 @@ def midscreen():
     print('2.Add cryptocurrency')
     print('3.Ammend Crypto currency')
     print('4.Remove Cryptocurrency')
-    print('5.Crpyot Portfoilio statement')
+    print('5.Crpyto Portfoilio statement')
     print('E.Exit menu')
 
 

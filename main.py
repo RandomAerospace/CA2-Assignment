@@ -52,13 +52,15 @@ if __name__=="__main__":
                 print('Display Cryptocurrency')
                 data_for_display=data.copy()
                 displaycrypto_raw(data_for_display)
-                print(data)
+                
                 
                 data_sorted=display_sort_options(data_for_display)
                 if data_sorted==0:
                     continue
                 else:
                     displaycrypto(data_sorted)
+                
+                #goes to finally step to clear shallow copies
                 
                 
             elif input=='2':
@@ -68,7 +70,8 @@ if __name__=="__main__":
 
             elif input=='3':
                 print('Amend CryptoCurrency')
-                ammendcrypto_stage_one(data)
+                data,index=ammendcrypto_stage_one(data)
+                ammend_crypto_stage_two(data, index)
                 encodefile(data)
                 #for this function, you need to return the data list in the function
             elif input=='4':
@@ -93,6 +96,7 @@ if __name__=="__main__":
             if main_run_state==0:
                 midscreen()
             del input
+            #can't find a way to make a deep copy without external libraries, only way for now.
             data=readfile()
     
     

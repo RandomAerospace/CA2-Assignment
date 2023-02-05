@@ -35,15 +35,32 @@ def display_sort_options(data):
 
             elif sort_options == '1': #market cap
                 sort_order=int(input('Increasing order:1  Decreasing order:2 \t'))
-                if sort_order==1:
+                if sort_order<1 or sort_order>2:
+                    raise ValueError()
+                
+
+                elif sort_order=='1':
+                    #key=method which is a function that is defined below
+                    #print(data)
+                    #Returns a list of dictionaries
+                    #[{'NAME': 'Bitcoin', 'MCAP': 1.0, 'Q': 15.0, 'BUYP': 38000.0, 'MPRICE': 23378.66},
+                    #{'NAME': 'Ethereum', 'MCAP': 1.0, 'Q': 90.0, 'BUYP': 4200.0, 'MPRICE': 1662.19}, 
+                    #{'NAME': 'Solana', 'MCAP': 2.0, 'Q': 60.0, 'BUYP': 260.0, 'MPRICE': 24.57},
+                    #{'NAME': 'Decentraland', 'MCAP': 2.0, 'Q': 30000.0, 'BUYP': 1.5, 'MPRICE': 0.78}, 
+                    #{'NAME': 'The Sandbox', 'MCAP': 2.0, 'Q': 25000.0, 'BUYP': 2.0, 'MPRICE': 0.76}, 
+                    #{'NAME': 'Dogecoin', 'MCAP': 1.0, 'Q': 55000.0, 'BUYP': 0.4, 'MPRICE': 0.01}]
                     
+                    #key=method which is a function that is defined below which sorts a dictionaries with respect to their keys.
                     data.sort(key=get_market_cap)
-                    
-                elif sort_order==2:
+                
+                elif sort_order=='2':
 
                     data.sort(key=get_market_cap,reverse=True)
-                    
+                
+                #turn back dictionary back to a list
                 data_sorted=dict_to_list(data)
+
+                #turn 1,2,3 back to high mid low for data presentation.
                 data_output=data_process_market_cap_output(data_sorted)
                         
                 return data_output
@@ -52,7 +69,10 @@ def display_sort_options(data):
 
             elif sort_options == '2': #quantity bought, this needs addiitonal processing for numbers
                 sort_order=int(input('Increasing order:1  Decreasing order:2 \t'))
-                if sort_order==1:
+                if sort_order<1 or sort_order>2:
+                    raise ValueError()
+
+                elif sort_order==1:
                     
                     data.sort(key=get_quantity)
                     
@@ -68,7 +88,11 @@ def display_sort_options(data):
 
             elif sort_options == '3': #buy price
                 sort_order=int(input('Increasing order:1  Decreasing order:2 \t'))
-                if sort_order==1:
+                if sort_order<1 or sort_order>2:
+                    raise ValueError()
+                
+
+                elif sort_order==1:
                     
                         data.sort(key=get_buy_in_price)
                     
@@ -84,7 +108,12 @@ def display_sort_options(data):
                 
             elif sort_options =='4':
                 sort_order=int(input('Increasing order:1  Decreasing order:2 \t'))
-                if sort_order==1:
+                if sort_order<1 or sort_order>2:
+                    raise ValueError()
+                
+               
+
+                elif sort_order==1:
                     
                     data.sort(key=get_market_price)
                     
@@ -99,7 +128,7 @@ def display_sort_options(data):
                 break
         
         except ValueError:
-            print('please put in an integer please')
+            print('please enter an appropriate option')
         
    
 #change to integers for the sake of sorting
@@ -135,8 +164,10 @@ def list_to_dict(data):
     for x in data:
         for y in x:
             
-        
+            
             if check_numerical(y)==True:
+                #integer AND float, y will be turned into a floating point number
+                #There is no need to revert back to string as this function does not return a value or save to a file.
                 x[x.index(y)]=float(y)
             
         crypto_dictionary_sub= dict(zip(keys, x))

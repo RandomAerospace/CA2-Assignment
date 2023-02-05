@@ -18,7 +18,7 @@
 
 # ####################################################################
 
-Base requirement functions done by Wai Phyo: Ammend and Add Crypto
+Base requirement functions done by Wai Phyo: Ammend, display crypto(sorting)
 
 New functions by Wai Phyo:
 
@@ -33,6 +33,9 @@ New functions by Wai Phyo:
 
    >This is "back end" code that has been made so that it can be referenced in multiple funcitions.
    >It uses 2 APIs, YahooFinance and Coinmarketcap(CMC). Yahoo finance searches for a crypto ticker when given a name. CMC takes that ticker and searches the livedata in it's dataset. CMC is used because they have a much wider range of cryptocurrencies avaiable as the barrier to entry for being listed on CMC is much lower than say, Binance, which is an exchange.
+
+3.Improvements on presentation of data in display crypto
+   > Cryptocurrencies can be sorted by name,market price, market cap, buy in price in both increasing and decreasing order
 
 3.Limitations:
    While all efforts have been put into ensuring input validation works, the current version of the program can only validate Floats, Integers, Strings but not fractions(3/4, 1/2 etc..).

@@ -58,6 +58,8 @@ def getTicker(crypto):
     #'symbol': 'AVAX-USD', 'index': 'quotes', 'score': 21571.0, 'typeDisp': 'Cryptocurrency', 
     #'exchDisp': 'CCC', 'isYahooFinance': True}, {'exchange': 'CCC', 'shortname': 'Avalanche CAD', 'quoteType': 'CRYPTOCURRENCY',
     #'symbol': 'AVAX-CAD', 'index': 'quotes', 'score': 20137.0,
+
+    #gives AVAX-USD
     return ticker
 
 
@@ -124,10 +126,6 @@ def update_live_data(data):
 
 #For use in manual operation
 def add_live_data(crypto_ticker):
-    
-    
-    
-   
    #Remove the - in the string to get data
     ticker=[]
     for i in crypto_ticker:

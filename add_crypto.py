@@ -66,28 +66,29 @@ def addcrypto(data):
                     if unique_state==False:
                         print("The crypto currency you entered already exists in your data base, maybe you might want to update it's other data")
                         assert uniquestate_error()
-                    
-                    #manual entry
-                    if update_state==0:
-                        state_count+=1
+                        state_count=0
+                    else:
+                        #manual entry
+                        if update_state==0:
+                            state_count+=1
 
 
-                        #Look up ticker
-                    if update_state==1:
-                        print('Looking for coin in our database...')
-                        new_ticker=getTicker(new_crypto)
-                        if new_ticker==False:
-                            state_count=0
-                        else:
-                            ticker_acceptance=input(f'Woop, we found this ticker {new_ticker} is this what you want? y/n\t')
-
-                            if ticker_acceptance.upper()=='Y':
-                                state_count+=1 #proceed to get market data (state count=2)
-                            if ticker_acceptance.upper()=='N':
-                                update_state=0
+                            #Look up ticker
+                        if update_state==1:
+                            print('Looking for coin in our database...')
+                            new_ticker=getTicker(new_crypto)
+                            if new_ticker==False:
+                                state_count=0
                             else:
-                                print('Please enter Y or N')
-                                assert enterstringplsException()
+                                ticker_acceptance=input(f'Woop, we found this ticker {new_ticker} is this what you want? y/n\t')
+
+                                if ticker_acceptance.upper()=='Y':
+                                    state_count+=1 #proceed to get market data (state count=2)
+                                if ticker_acceptance.upper()=='N':
+                                    update_state=0
+                                else:
+                                    print('Please enter Y or N')
+                                    assert enterstringplsException()
                                  
             elif state_count==2 and run_state==True and update_state==1:
                 print('Getting market data..')
@@ -121,7 +122,8 @@ def addcrypto(data):
                     
           
     
-            #Input takes in float to go through a value type check.
+            #Input takes in as string, input validation goes through Cancel key "E" ->checknumerical() to check if it's a int or float, returns
+            #false if it is string
             #it then coverts back to string for the sake of ease of data processing in other functions and saving data
             elif state_count==3  and run_state==True:
                 new_quantity=input('enter quantity of crypto bought=\t')
@@ -178,8 +180,8 @@ def addcrypto(data):
                 state_count+=1
 
             elif state_count==7:
-                user_restart_input=input('Y: save changes N:Restart from beginning')
-                print(state_count)
+                user_restart_input=input('Y: save changes N:Restart from beginning\t')
+               
                 if user_restart_input.upper()=='N':
                     state_count=0
                 elif user_restart_input.upper()=='Y':
@@ -194,9 +196,9 @@ def addcrypto(data):
             elif state_count==8:
                 update_state=str(update_state)
                 add_data=[new_crypto,addon_market_cap,new_quantity,new_buy_in,new_market_price,update_state]
-                print(add_data)
+                
                 data.append(add_data)   
-                print(data)
+            
                 
                 return data
                 run_state=False
