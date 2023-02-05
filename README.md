@@ -52,9 +52,4 @@ New functions by Wai Phyo:
 
 # ####################################################################
 
-Base requirement functions done by Terrence: crypto portfolio statement, remove crypto,display crypto(sorting)
-
-New functions done by Terence:
-
-Improvements on presentation of data in display crypto
-   > Cryptocurrencies can be sorted by name,market price, market cap, buy in price in both increasing and decreasing order
+Base requirement functions done by Terence: Sorting, remove, cryptoportfolio statement
