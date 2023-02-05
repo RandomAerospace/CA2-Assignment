@@ -64,7 +64,7 @@ def ammend_crypto_stage_two(data,index):
                         
                 
             
-                if int(edit_input)<0 or int(edit_input)>5 : #input validation
+                if int(edit_input)<1 or int(edit_input)>5 : #input validation
                     raise ValueError
 
 
