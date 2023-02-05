@@ -1,15 +1,25 @@
 # CA2 Assignment
  python assignment for Programming fundamentals
 
+
+# Libraries needed to run:
+   > pip install pyfiglet 
+   > pip install tabulate  
+   > pip install requests
+   pyfiglet makes nice ascii art
+   tabulate makes data into tables
+   requests is for calling APIs
+
 # Program strcuture:
    main.py(Main file)
 
 ## subfiles:
-   start_end.py(Function for showing start screen and Decoding, endcoding files)
-   display_crypto.py(Function for displaying crypto in a table and sorting them according to user inputted parameters)
-   add_crypto.py(Function for adding cryptocurrency and it's data manually or automatically)
-   ammend_crypto.py(ammending existing data)
-   cryptoportfoilio_statement.py(Shows cryptoportfolio statement in a table)
+   start_end.py (Function for showing start screen and Decoding, endcoding files)
+   display_crypto.py (Function for displaying crypto in a table and sorting them according to user inputted parameters)
+   add_crypto.py (Function for adding cryptocurrency and it's data manually or automatically)
+   ammend_crypto.py (ammending existing data)
+   cryptoportfoilio_statement.py (Shows cryptoportfolio statement in a table)
+   dataset.csv (data is contained there)
 
 ## backend files which have functions that may be referenced by sub files:
    live_data.py
@@ -40,9 +50,9 @@ New functions by Wai Phyo:
    While all efforts have been put into ensuring input validation works, the current version of the program can only validate Floats, Integers, Strings but not fractions(3/4, 1/2 etc..).
    
 
-#####################################################################
+# ####################################################################
 
-Base requirement functions done by Terrence: cryptoportfolio_statement, remove crypto,display crypto(sorting)
+Base requirement functions done by Terrence: crypto portfolio statement, remove crypto,display crypto(sorting)
 
 New functions done by Terence:
 
