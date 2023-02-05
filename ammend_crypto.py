@@ -144,7 +144,7 @@ def ammend_crypto_stage_two(data,index):
                         assert enterdigitplsException()
 
                 elif edit_input=='5':
-                    ammend_market_price=input('Enter new market price')
+                    ammend_market_price=input('Enter new market price:\t')
 
                     if (str(ammend_market_price)).upper()=='E':
                             run_state=False
