@@ -61,7 +61,7 @@ def addcrypto(data):
 
                 else:
                     #check if crypto currency is there
-                    new_crypto=new_crypto.upper()
+                    new_crypto=new_crypto.upper() #fool proof way of ensuring everything is in upper case so that it is easier to check for uniqueness
                     unique_state=cryptocheck(data, new_crypto) #returns boolean state, if unique, will be true
                     
                     if unique_state==False:
@@ -221,7 +221,7 @@ def addcrypto(data):
 def cryptocheck(data,new_crypto): 
     
     unique_state=True #boolean
-    new_crypto.upper()
+    
     
     for i in data:
         if (i[0]).upper()==new_crypto: #element zero is where names are stored
