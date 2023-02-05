@@ -1,7 +1,10 @@
 # CA2 Assignment
  python assignment for Programming fundamentals
-
-
+ FOXTROT
+ LECTURER:Mak Kam Lock Robin
+ Sai Wai Phyo, 2011716, serial number 9
+ Terence Chew (Zhou Yixue),P2034784   , serial number 19
+ 
 # Libraries needed to run:
    > pip install pyfiglet 
    > pip install tabulate  
