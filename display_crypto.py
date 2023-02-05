@@ -97,20 +97,11 @@ def display_sort_options(data):
                         
                 return data_output
                 break
-            
-
-                
-
-            
-
-
+        
         except ValueError:
             print('please put in an integer please')
         
-  
-                
-        
-    
+   
 #change to integers for the sake of sorting
 def data_process_market_cap(data):
     for i in data:
