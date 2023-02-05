@@ -61,6 +61,7 @@ def addcrypto(data):
 
                 else:
                     #check if crypto currency is there
+                    new_crypto=new_crypto.upper()
                     unique_state=cryptocheck(data, new_crypto) #returns boolean state, if unique, will be true
                     
                     if unique_state==False:
@@ -220,9 +221,13 @@ def addcrypto(data):
 def cryptocheck(data,new_crypto): 
     
     unique_state=True #boolean
+    new_crypto.upper()
+    
     for i in data:
-        if i[0]==new_crypto: #element zero is where names are stored
+        if (i[0]).upper()==new_crypto: #element zero is where names are stored
+            
             unique_state=False
+            
 
     return unique_state
 
