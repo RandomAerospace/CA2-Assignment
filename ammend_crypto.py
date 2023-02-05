@@ -20,9 +20,10 @@ def ammendcrypto_stage_one(data):
         try:
             
             if user_input.upper()== "E":
-                return data
+                 
                 print("Exiting to menu...")
-                exit()
+                return False,False
+                
             if int(user_input)<0 or int(user_input)>count-1 : #input validation
                 raise ValueError
 

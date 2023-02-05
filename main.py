@@ -69,10 +69,13 @@ if __name__=="__main__":
                 encodefile(data)
 
             elif input=='3':
-                print('Amend CryptoCurrency')
+                print('Amend Cryptocurrency')
                 data,index=ammendcrypto_stage_one(data)
-                ammend_crypto_stage_two(data, index)
-                encodefile(data)
+                if data==False and index==False:
+                    continue
+                else:
+                    ammend_crypto_stage_two(data, index)
+                    encodefile(data)
                 #for this function, you need to return the data list in the function
             elif input=='4':
                 print('Remove Cryptocurrency')
