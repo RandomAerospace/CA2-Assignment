@@ -43,4 +43,4 @@ New functions by Wai Phyo:
 
 #####################################################################
 
-Base requirement functions done by Terrence: 
+Base requirement functions done by Terence: Sorting, remove, cryptoportfolio statement
