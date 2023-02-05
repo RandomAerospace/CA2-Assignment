@@ -49,7 +49,7 @@ def ammend_crypto_stage_two(data,index):
     run_state=True #program flag 1
     while(run_state==True):
         
-        edit_input=input('What do you want to edit?:\t')
+        edit_input=input('\nWhat do you want to edit?:\t')
 
         try:
                 
