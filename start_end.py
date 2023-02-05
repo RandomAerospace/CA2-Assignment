@@ -60,7 +60,7 @@ def readfile():
 
 def encodefile(data):
     with open('dataset.csv','w') as file:
-        headers=['Name','Market_cap','Quantity','Buy_price','Market_price']
+        headers=['Name','Market_cap','Quantity','Buy_price','Market_price','update_state']
         data.insert(0,headers)
         for i in data:
             file.write(','.join(i) + '\n')
