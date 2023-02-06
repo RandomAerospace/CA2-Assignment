@@ -29,7 +29,7 @@ class inputerror(Exception):
 if __name__=="__main__":
     data=readfile() #Initialises program by decoding crypto dataset csv file
     
-    update_live_data(data)
+    #update_live_data(data)
     startingscreen()
     
     #add in autoupdate function here

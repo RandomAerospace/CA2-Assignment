@@ -52,16 +52,18 @@ def display_sort_options(data):
                     
                     #key=method which is a function that is defined below which sorts a dictionaries with respect to their keys.
                     data.sort(key=get_market_cap)
-                
+                    
                 elif sort_order=='2':
 
                     data.sort(key=get_market_cap,reverse=True)
                 
                 #turn back dictionary back to a list
+            
                 data_sorted=dict_to_list(data)
 
                 #turn 1,2,3 back to high mid low for data presentation.
                 data_output=data_process_market_cap_output(data_sorted)
+                
                         
                 return data_output
                 break
@@ -120,7 +122,7 @@ def display_sort_options(data):
                 elif sort_order==2:
                         
                     data.sort(key=get_market_price,reverse=True)
-                    
+                  
                 data_sorted=dict_to_list(data)
                 data_output=data_process_market_cap_output(data_sorted)
                         
@@ -132,24 +134,25 @@ def display_sort_options(data):
         
    
 #change to integers for the sake of sorting
+#change to integers for the sake of sorting
 def data_process_market_cap(data):
     for i in data:
         if i[1]=='High':
-            i[1]=1
+            i[1]='1'
         if i[1]=='Mid':
-            i[1]=2
+            i[1]='2'
         if i[1]=='Low':
-            i[1]==3
+            i[1]=='3'
     return data
 
 #change back to original for presentation of data
 def data_process_market_cap_output(data):
     for i in data:
-        if i[1]==1:
+        if i[1]==1.0:
             i[1]='High'
-        if i[1]==2:
+        if i[1]==2.0:
             i[1]='Mid'
-        if i[1]==3:
+        if i[1]==3.0:
             i[1]=='Low'
 
     return data
